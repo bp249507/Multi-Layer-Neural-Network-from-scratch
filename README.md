@@ -7,7 +7,7 @@ In a fully connected neural network neurons of each layer share all of the neuro
 
 
 ![img](http://cs231n.github.io/assets/nn1/neural_net2.jpeg)
-Source ([http://cs231n.github.io/neural-networks-1/])
+<br>Source ([http://cs231n.github.io/neural-networks-1/])
 
 ### Training the network
  
