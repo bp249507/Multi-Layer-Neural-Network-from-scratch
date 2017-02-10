@@ -15,7 +15,7 @@ Source ([http://cs231n.github.io/neural-networks-1/])
 #### Steps:
 
 #### Forward propogation:<br>
-In the above figure hidden layer 1 is connected to the input layer with weights $W^{1}$ and bias $b^{1}$. Here $W^{1}$ is a matrix of size n x h1 (n=3, h1=4) and $b{1}$ is vector of length (h1=4). Similary $W^{2}$ and $b^{2}$ of sizes h1 x h2 (=4x4) and h2 (=4) connects hidden layer 1 to hidden layer 2. Finally $W^{3}$ and $b^{3}$ of sizes h2 x k (=4x1) and k (=1) connect hidden layer 2 with output layer. In general we have:<br>
+In the above figure hidden layer 1 is connected to the input layer with weights ![w1](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Clarge%20%5C%5C%20W%5E%7B1%7D) and bias b^1. Here $W^{1}$ is a matrix of size n x h1 (n=3, h1=4) and $b{1}$ is vector of length (h1=4). Similary $W^{2}$ and $b^{2}$ of sizes h1 x h2 (=4x4) and h2 (=4) connects hidden layer 1 to hidden layer 2. Finally $W^{3}$ and $b^{3}$ of sizes h2 x k (=4x1) and k (=1) connect hidden layer 2 with output layer. In general we have:<br>
 
 ![fp](http://latex.codecogs.com/gif.latex?%5Clarge%20%5C%5C%20z%5E%7Bl&plus;1%7D%20%3D%20%28W%5E%7Bl%7D%29%5E%7BT%7Da%5E%7Bl%7D%20&plus;%20b%5E%7Bl%7D%24%20%5C%5C%20%24a%5E%7Bl%7D%20%3D%20sigmod%28z%5E%7Bl%7D%29%24%20%5C%5C%20%5C%5C%20%24sigmoid%28p%29%20%3D%20%5Cfrac%7B1%7D%7B1&plus;e%5E%7B-p%7D%7D%24%20%5C%5C%20%24a%5E%7B1%7D%20%3D%20input%24)
 
