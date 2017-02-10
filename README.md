@@ -17,47 +17,30 @@ Source ([http://cs231n.github.io/neural-networks-1/])
 #### Forward propogation:<br>
 In the above figure hidden layer 1 is connected to the input layer with weights $W^{1}$ and bias $b^{1}$. Here $W^{1}$ is a matrix of size n x h1 (n=3, h1=4) and $b{1}$ is vector of length (h1=4). Similary $W^{2}$ and $b^{2}$ of sizes h1 x h2 (=4x4) and h2 (=4) connects hidden layer 1 to hidden layer 2. Finally $W^{3}$ and $b^{3}$ of sizes h2 x k (=4x1) and k (=1) connect hidden layer 2 with output layer. In general we have:<br>
 
-$z^{l+1} = (W^{l})^{T}a^{l} + b^{l}$ <br>
-$a^{l} = sigmod(z^{l})$ <br>
-
-$sigmoid(p) = \frac{1}{1+e^{-p}}$ <br>
-
-$a^{1} = input$
+![fp](http://latex.codecogs.com/gif.latex?%5Clarge%20%5C%5C%20z%5E%7Bl&plus;1%7D%20%3D%20%28W%5E%7Bl%7D%29%5E%7BT%7Da%5E%7Bl%7D%20&plus;%20b%5E%7Bl%7D%24%20%5C%5C%20%24a%5E%7Bl%7D%20%3D%20sigmod%28z%5E%7Bl%7D%29%24%20%5C%5C%20%5C%5C%20%24sigmoid%28p%29%20%3D%20%5Cfrac%7B1%7D%7B1&plus;e%5E%7B-p%7D%7D%24%20%5C%5C%20%24a%5E%7B1%7D%20%3D%20input%24)
 
 output:<br>
-$a^{n_{l}} = softmax(z^{n_{l}})$ <br>
 
-$softmax(p_{i}) = \frac{e^{p_{i}}}{\sum e^{p_{i}}} $
-
+![output](http://latex.codecogs.com/gif.latex?%5Clarge%20%5C%5C%20a%5E%7Bn_%7Bl%7D%7D%20%3D%20softmax%28z%5E%7Bn_%7Bl%7D%7D%29%24%20%5C%5C%20%5C%5C%20%24softmax%28p_%7Bi%7D%29%20%3D%20%5Cfrac%7Be%5E%7Bp_%7Bi%7D%7D%7D%7B%5Csum%20e%5E%7Bp_%7Bi%7D%7D%7D%20%24)
 
 #### Cost Function: (m examples and k outputs)<br>
-$J = - \frac{1}{m} \sum_{m} \sum_{i} y_{i}.log(y^{'}_{i}) $ <br>
-
-$y^{'}=a^{n_{l}}$ is the predicted output i.e. softmax($z^{n_{l}}$) in this case. <br>
+![cost](http://latex.codecogs.com/gif.latex?%5Clarge%20%5C%5C%20J%20%3D%20-%20%5Cfrac%7B1%7D%7Bm%7D%20%5Csum_%7Bm%7D%20%5Csum_%7Bi%7D%20y_%7Bi%7D.log%28y%5E%7B%27%7D_%7Bi%7D%29%20%24%20%5C%5C%20%5C%5C%20%24y%5E%7B%27%7D%3Da%5E%7Bn_%7Bl%7D%7D%24%20%5C%5C%20is%20the%20predicted%20output%20i.e.%20softmax%28%24z%5E%7Bn_%7Bl%7D%7D%24%29%20in%20this%20case.%20%5C%5C)
 
 For output layer:
-$\delta^{n_{l}} = (a^{n_{l}}_{i}-y_{i})$
+![output](http://latex.codecogs.com/gif.latex?%5Clarge%20%5C%5C%20%24%5Cdelta%5E%7Bn_%7Bl%7D%7D%20%3D%20%28a%5E%7Bn_%7Bl%7D%7D_%7Bi%7D-y_%7Bi%7D%29%24)
 
 
 #### Back propagation:<br>
 Backpropagation is used to efficiently compute the gradient of the cost function with respect to each weight and bias. <br>
 output layer:<br>
-$\frac{\partial J}{\partial z^{n_{l}}} = \delta ^{n_{l}} = (a^{n_{l}}-y)$  
+![ol](http://latex.codecogs.com/gif.latex?%5Clarge%20%5C%5C%20%5Cfrac%7B%5Cpartial%20J%7D%7B%5Cpartial%20z%5E%7Bn_%7Bl%7D%7D%7D%20%3D%20%5Cdelta%20%5E%7Bn_%7Bl%7D%7D%20%3D%20%28a%5E%7Bn_%7Bl%7D%7D-y%29%24)
 
 hidden layer:<br>
-$\delta ^{l} = (W^{l})^{T}\delta ^{l+1} \odot f'(z^{l}) $ <br>
-
-$\odot $represents item wise product
-
-$\frac{\partial J}{\partial W^{l}} = (a^{l})^{T} \delta^{l+1} $ <br>
-$\frac{\partial J}{\partial b^{l}} = \sum^{m} \delta^{l+1} $
-
+![hl](http://latex.codecogs.com/gif.latex?%5Clarge%20%5C%5C%20%5Cdelta%20%5E%7Bl%7D%20%3D%20%28W%5E%7Bl%7D%29%5E%7BT%7D%5Cdelta%20%5E%7Bl&plus;1%7D%20%5Codot%20f%27%28z%5E%7Bl%7D%29%20%24%20%5C%5C%20%5C%5C%20%24%5Codot%20%24represents%20item%20wise%20product%20%5C%5C%20%5C%5C%20%24%5Cfrac%7B%5Cpartial%20J%7D%7B%5Cpartial%20W%5E%7Bl%7D%7D%20%3D%20%28a%5E%7Bl%7D%29%5E%7BT%7D%20%5Cdelta%5E%7Bl&plus;1%7D%20%24%20%5C%5C%20%5C%5C%20%24%5Cfrac%7B%5Cpartial%20J%7D%7B%5Cpartial%20b%5E%7Bl%7D%7D%20%3D%20%5Csum%5E%7Bm%7D%20%5Cdelta%5E%7Bl&plus;1%7D%20%24)
 
 #### Updates:<br>
 After we have all the required elements (gradient of J), we update corresponding element as <br>
-$W^{l} = W^{l} - \alpha \frac{\partial J}{\partial W^{l}}$ <br>
-$b^{l} = b^{l} - \alpha \frac{\partial J}{\partial b^{l}}$
-
+![update](http://latex.codecogs.com/gif.latex?%5Clarge%20%5C%5C%20W%5E%7Bl%7D%20%3D%20W%5E%7Bl%7D%20-%20%5Calpha%20%5Cfrac%7B%5Cpartial%20J%7D%7B%5Cpartial%20W%5E%7Bl%7D%7D%24%20%5C%5C%20%5C%5C%20%24b%5E%7Bl%7D%20%3D%20b%5E%7Bl%7D%20-%20%5Calpha%20%5Cfrac%7B%5Cpartial%20J%7D%7B%5Cpartial%20b%5E%7Bl%7D%7D%24)
 
 Details of explanation can be found <a href='http://ufldl.stanford.edu/tutorial/supervised/MultiLayerNeuralNetworks/'>here</a>. <br>
 Let's jump into the coding :
